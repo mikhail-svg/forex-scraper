@@ -2,14 +2,12 @@ from tkinter import *
 import requests
 from bs4 import BeautifulSoup
 
-
 ##
 def pageget():
     #Retrieves a requests.Response object and stores it in page variable
     url = "https://www.centralbank.go.ke/forex/"
     page = requests.get(url)
     return page
-
 
 
 def resultget():
@@ -21,19 +19,16 @@ def resultget():
         list_of_currencies.append(elem_ent.text)
     return list_of_currencies
 
-
 #create individual lists then a dictionary
 currency = resultget()[:6:2]
 value = resultget()[1:6:2]
 list_of_currency = dict(zip(currency, value))
 
 
-
 def get_value(curr_name):
     #function to map currency key to corresponding values
     return list_of_currency[curr_name]
 ##
-
 
 def populate():
     #push figures to entry upon button press
