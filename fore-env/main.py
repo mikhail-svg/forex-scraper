@@ -31,6 +31,11 @@ def get_value(curr_name):
 ##
 
 def populate():
+    #clear entries first to avoid string concatenation
+    usd_entry.delete(0, END)
+    euro_entry.delete(0, END)
+    stg_pound_entry.delete(0, END)
+
     #push figures to entry upon button press
     try:
         currenc = []
