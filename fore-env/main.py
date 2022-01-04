@@ -2,16 +2,17 @@ from tkinter import *
 import requests
 from bs4 import BeautifulSoup
 
-##
+
+
 def pageget():
-    #Retrieves a requests.Response object and stores it in page variable
+#Retrieves a requests.Response object and stores it in page variable
     url = "https://www.centralbank.go.ke/forex/"
     page = requests.get(url)
     return page
 
 
 def resultget():
-    #Get DOM info from webpage and filter by "td" class and class name, first 6 lines only
+#Get DOM info from webpage and filter by "td" class and class name, first 6 lines only
     soup = BeautifulSoup(pageget().content, "html.parser")
     results = soup.find_all("td", class_="tg-4eph")
     list_of_currencies = []
@@ -26,17 +27,17 @@ list_of_currency = dict(zip(currency, value))
 
 
 def get_value(curr_name):
-    #function to map currency key to corresponding values
+#function to map currency key to corresponding values
     return list_of_currency[curr_name]
-##
+
 
 def populate():
-    #clear entries first to avoid string concatenation
+#clear entries first to avoid string concatenation
     usd_entry.delete(0, END)
     euro_entry.delete(0, END)
     stg_pound_entry.delete(0, END)
 
-    #push figures to entry upon button press
+#push figures to entry upon button press
     try:
         currenc = []
         currenc.append(get_value("US DOLLAR"))
