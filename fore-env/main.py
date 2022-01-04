@@ -11,7 +11,7 @@ def pageget():
 
 
 def resultget():
-    #Get DOM info from page and filter by "td" class and class name, first 6 lines only
+    #Get DOM info from webpage and filter by "td" class and class name, first 6 lines only
     soup = BeautifulSoup(pageget().content, "html.parser")
     results = soup.find_all("td", class_="tg-4eph")
     list_of_currencies = []
